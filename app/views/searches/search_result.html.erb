@@ -1,0 +1,41 @@
+<% if @range == "User" %>
+<h2>Users search for "<%= "#{@word}" %>"</h2>
+<table class="table table-hover table-inverse">
+<thead>
+ <tr>
+  <td></td>
+  <td>name</td>
+  <td>introduction</td>
+  </tr>
+</thead>
+<tbody>
+   <tr>
+     <% @users.each do |user| %>
+     <td><%= image_tag user.get_profile_image, size: "50x50" %></td>
+     <td><%= user.name %></td>
+     <td><%= user.introduction %></td>
+     <% end %>
+   </tr>
+ </tbody>
+ </table>
+ <% else %>
+ <h2>Books search for "<%= "#{@word}" %>"</h2>
+ <table class="table table-hover table-inverse">
+   <thead>
+     <tr>
+       <td></td>
+       <td>title</td>
+       <td>Opinion</td>
+     </tr>
+   </thead>
+   <tbody>
+     <tr>
+       <% @books.each do |book| %>
+       <td><%=image_tag book.user.get_profile_image, size: "50x50" %></td>
+       <td><%= book.title %></td>
+       <td><%= book.body %></td>
+       <% end %>
+     </tr>
+   </tbody>
+ </table>
+ <% end %>
